@@ -70,7 +70,7 @@ public class NavigationActivity extends AppCompatActivity implements SensorEvent
     // TextViews to display current sensor values.
     private TextView mTextNotification;
     private TextView mTextSensorAzimuth;
-    private TextView mTextSensorPitch;
+    //private TextView mTextSensorPitch;
     private TextView mTextSensorRoll;
 
     private Runnable mRunnable;
@@ -87,7 +87,7 @@ public class NavigationActivity extends AppCompatActivity implements SensorEvent
 
         mTextNotification = (TextView) findViewById(R.id.value_notification);
         mTextSensorAzimuth = (TextView) findViewById(R.id.value_azimuth);
-        mTextSensorPitch = (TextView) findViewById(R.id.value_pitch);
+        //mTextSensorPitch = (TextView) findViewById(R.id.value_pitch);
         mTextSensorRoll = (TextView) findViewById(R.id.value_roll);
 
         Bundle extras = getIntent().getExtras();
@@ -181,8 +181,8 @@ public class NavigationActivity extends AppCompatActivity implements SensorEvent
         // Fill in the string placeholders and set the textview text.
         mTextSensorAzimuth.setText(getResources().getString(
                 R.string.value_format, azimuth));
-        mTextSensorPitch.setText(getResources().getString(
-                R.string.value_format, pitch));
+        //pitch might not be concerned in this project as we looking through the phone all time
+        //mTextSensorPitch.setText(getResources().getString(R.string.value_format, pitch));
         mTextSensorRoll.setText(getResources().getString(
                 R.string.value_format, roll));
 
@@ -195,8 +195,9 @@ public class NavigationActivity extends AppCompatActivity implements SensorEvent
             float distance = deviceLocation.distanceTo(startLocation);
 
             mTextNotification.setText(getResources().getString(R.string.value_format, distance));
-            if (distance > 0){
-                //navigate the user to the starting marker
+            //finding the best value to determine user was closed to the starting point
+            if (distance < 3.0){
+                //should remove the starting marker and show the route
             }
 
         } else{
@@ -234,6 +235,7 @@ public class NavigationActivity extends AppCompatActivity implements SensorEvent
                         Location currentLocation = (Location) task.getResult();
 
                         if (currentLocation != null){
+                            deviceLocation = new Location("");
                             deviceLocation.setLatitude(currentLocation.getLatitude());
                             deviceLocation.setLongitude(currentLocation.getLongitude());
                         }
