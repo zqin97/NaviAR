@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">NaviAR</string>
+    <string name="title_activity_maps">Map</string>
+    <!-- Text view for MapsActivity-->
+    <string name="hint_search_bar">Enter address, location or postcode</string>
+    <string name="btn_route">Press for determine route</string>
+    <string name="btn_navigate">Press for Navigation</string>
+
+    <!-- Text view for Navigation activity -->
+    <string name="label_info">Noted:</string>
+    <string name="label_align">ALIGNED!!!!</string>
+    <string name="label_right">TURN RIGHT!!!!</string>
+    <string name="label_left">TURN LEFT!!!!</string>
+    <string name="label_azimuth_string">Azmiuth:</string>
+    <string name="label_pitch_string">Pitch:</string>
+    <string name="label_roll_string">Roll:</string>
+
+    <!-- String for the orientation values. The %1$.2f part is a placeholder
+ that will be filled in at runtime:
+ %1 is the value to replace
+ $.2f says the value is a float, with two decimal places.  -->
+    <string name="value_format">%1$.2f</string>
+</resources>
